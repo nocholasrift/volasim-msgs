@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package volasim_msgs;
+
+import "Header.proto";
+
+message TrajectoryPoint {
+  message Vec3 {
+    double x = 1;
+    double y = 2;
+    double z = 3;
+  }
+
+  message Quat {
+    double x = 1;
+    double y = 2;
+    double z = 3;
+    double w = 4;
+  }
+
+  Vec3 pos  = 1;
+  Vec3 vel  = 2;
+  Vec3 acc  = 3;
+  Vec3 jerk = 4;
+
+  Quat orientation = 5;
+  Vec3 angular_vel = 6;
+  Vec3 angular_acc = 7;
+
+  double yaw  = 8;
+  double time = 9;
+}
+
+message Trajectory {
+  Header header = 1;
+  repeated TrajectoryPoint points = 2;
+}
